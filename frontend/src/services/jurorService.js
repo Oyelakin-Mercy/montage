@@ -14,7 +14,8 @@ const jurorService = {
 
   getPastRanking: (id) => apiBackend.get(`juror/round/${id}/rankings`),
 
-  getFaves: () => apiBackend.get('juror/faves'),
+  getFaves: (roundId, offset = 0, limit = 10) =>
+    apiBackend.get(`juror/faves?round_id=${roundId}&offset=${offset}&limit=${limit}`),
 
   getRound: (id) => apiBackend.get(`juror/round/${id}`),
 

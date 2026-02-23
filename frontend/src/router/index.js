@@ -11,6 +11,7 @@ import VoteView from '@/views/VoteView.vue'
 import VoteEditView from '@/views/VoteEditView.vue'
 import AllCampaignView from '@/views/AllCampaignView.vue'
 import PermissionDenied from '@/views/PermissionDenied.vue'
+import FavesView from '@/views/FavesView.vue'
 
 const routes = [
   {
@@ -40,6 +41,12 @@ const routes = [
     path: '/vote/:id',
     name: 'vote',
     component: VoteView,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/vote/:id/faves',
+    name: 'faves',
+    component: FavesView,
     meta: { requiresAuth: true }
   },
   {

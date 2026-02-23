@@ -91,6 +91,9 @@
           <cdx-button weight="quiet" @click="goPrevVoteEditing">
             <pencil class="icon-small" /> {{ $t('montage-edit-previous-vote') }}
           </cdx-button>
+          <cdx-button class="edit-voting-btn" @click="goFaves">
+            <heart class="icon-small" /> {{ $t('montage-view-favourites') }}
+          </cdx-button>
         </div>
       </div>
 
@@ -153,6 +156,10 @@
       <cdx-button class="edit-voting-btn" @click="goPrevVoteEditing">
         <pencil class="icon-small" />
         {{ $t('montage-edit-previous-vote') }}
+      </cdx-button>
+      <cdx-button weight="quiet" @click="goFaves">
+        <heart class="icon-small" />
+        {{ $t('montage-view-favourites') }}
       </cdx-button>
     </div>
   </div>
@@ -221,6 +228,10 @@ function toggleSidebar() {
 
 function goPrevVoteEditing() {
   router.push({ name: 'vote-edit', params: { id: roundLink } })
+}
+
+const goFaves = () => {
+  router.push({ name: 'faves', params: { id: roundLink } })
 }
 
 function handleImageLoad() {

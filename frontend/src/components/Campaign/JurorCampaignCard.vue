@@ -44,8 +44,11 @@
                     @click="goRoundVoting(round, 'vote')"
                     >{{ $t('montage-vote') }}</cdx-button
                   >
-                  <cdx-button action="progressive" @click="goRoundVoting(round, 'vote-edit')">{{
+                  <cdx-button action="progressive" class="vote-button" @click="goRoundVoting(round, 'vote-edit')">{{
                     $t('montage-edit-previous-vote')
+                  }}</cdx-button>
+                  <cdx-button action="progressive" @click="goRoundVoting(round, 'faves')">{{
+                    $t('montage-view-favourites')
                   }}</cdx-button>
                 </div>
               </div>

@@ -2583,10 +2583,16 @@ class JurorDAO(object):
 
         return task_query.limit(num).all()
 
-    def get_faves(self, sort='desc', limit=10, offset=0):
+    def get_faves(self, sort='desc', limit=10, offset=0, round_id=None):
         faves_query = (self.query(Favorite)
                             .filter_by(user=self.user,
                                         status=ACTIVE_STATUS))
+    
+        if round_id:
+            faves_query = (faves_query
+                            .join(RoundEntry, RoundEntry.id == Favorite.round_entry_id)
+                            .filter(RoundEntry.round_id == round_id))
+
         if sort == 'asc':
             faves_query = faves_query.order_by(
                             func.coalesce(Favorite.modified_date,

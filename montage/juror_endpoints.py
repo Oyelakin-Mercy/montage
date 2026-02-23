@@ -229,7 +229,8 @@ def get_faves(user_dao, request_dict):
     limit = request_dict.get('limit', 10)
     offset = request_dict.get('offset', 0)
     sort = request_dict.get('sort', 'desc')
-    faves = juror_dao.get_faves(sort, limit, offset)
+    round_id = request_dict.get('round_id')  
+    faves = juror_dao.get_faves(sort, limit, offset, round_id=round_id)
     return {'data': [f.to_details_dict() for f in faves]}
 
 
